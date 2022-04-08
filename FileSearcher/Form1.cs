@@ -1,4 +1,4 @@
-﻿using Microsoft.WindowsAPICodePack.Dialogs;
+using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,7 +18,7 @@ namespace FileSearcher
         public frmMain()
         {
             InitializeComponent();
-            //this.setDefaultValues();
+            this.setDefaultValues();
         }
 
         private void setDefaultValues()
@@ -80,11 +80,21 @@ namespace FileSearcher
                     if (fileContents.Contains(searchStr.Trim()))
                     {
                         var destination = this.txtOutput.Text + "\\" + Path.GetFileName(file);
+
+                        int count = 1;
+                        while (File.Exists(destination))
+                        {
+                            var tempFilename = string.Format("{0}_{1}", Path.GetFileNameWithoutExtension(file), count++);
+                            destination = this.txtOutput.Text + "\\" + tempFilename + Path.GetExtension(file);
+                        }
+
                         //Copy File to Output
                         File.Copy(file, destination);
 
                         if (this.chkDelete.Checked)
                             File.Delete(file);
+
+                        break;
                     }
                 }
 
@@ -112,6 +122,11 @@ namespace FileSearcher
             {
                 this.txtOutput.Text = dialog.FileName;
             }
+        }
+
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
