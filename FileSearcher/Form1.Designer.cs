@@ -1,4 +1,4 @@
-﻿
+
 namespace FileSearcher
 {
     partial class frmMain
@@ -122,6 +122,7 @@ namespace FileSearcher
             this.btnStop.TabIndex = 7;
             this.btnStop.Text = "Stop";
             this.btnStop.UseVisualStyleBackColor = true;
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
             // btnClose
             // 
@@ -171,9 +172,9 @@ namespace FileSearcher
             this.chkDelete.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.chkDelete.Location = new System.Drawing.Point(188, 163);
             this.chkDelete.Name = "chkDelete";
-            this.chkDelete.Size = new System.Drawing.Size(212, 25);
+            this.chkDelete.Size = new System.Drawing.Size(183, 25);
             this.chkDelete.TabIndex = 12;
-            this.chkDelete.Text = "Delete files not matched.";
+            this.chkDelete.Text = "Delete files matched.";
             this.chkDelete.UseVisualStyleBackColor = true;
             // 
             // chkClear
